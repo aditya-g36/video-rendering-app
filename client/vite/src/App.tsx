@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import signup from "./pages/signup";
 import { AuthProvider } from "./context/AuthContext";
-import VideoPlayer from "./components/videoplayer";
+import Video from "./pages/Video";
 import SearchResults from "./pages/searchresults";
 import LivePlayer from "./components/Liveplayer";
 function App() {
@@ -19,7 +19,7 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route Component={Layout} path="/">
                 <Route Component={HomePage} path="" />
-                <Route path="video/:filename" element={<VideoPlayer />} />
+                <Route path="video/:filename" element={<Video />} />
                 <Route path="live/:filename" element={<LivePlayer />} />
                 <Route path="search/:searchquery" element={<SearchResults />} />
               </Route>

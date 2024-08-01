@@ -8,6 +8,7 @@ interface Video {
   profilePicture: string;
   username: string;
   filename: string;
+  description: string;
 }
 
 interface VideoCardProps {
@@ -19,7 +20,7 @@ export default function VideoCard({ data }: VideoCardProps) {
 
   const playVideo = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    navigate(`/video/${data.filename}`);
+    navigate(`/video/${data.filename}`, { state: { videoData: data } });
   };
 
   return (
@@ -33,16 +34,14 @@ export default function VideoCard({ data }: VideoCardProps) {
           alt={data.title}
           className="object-cover w-full h-full"
         />
-        <div className="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-1 py-0.5 rounded">
-          // duration
-        </div>
+
       </div>
       <div className="mt-2 flex">
         <div className="flex-shrink-0 mr-3">
           <Avatar src={data.profilePicture} size="sm" alt={data.username} />
         </div>
         <div className="flex-grow">
-          <h3 className="text-sm font-semibold line-clamp-2 mb-1">
+          <h3 className="text-sm text-white line-clamp-2 mb-1">
             {data.title}
           </h3>
           <p className="text-xs text-gray-500">{data.username}</p>

@@ -10,6 +10,7 @@ interface Video {
   profilePicture: string;
   username: string;
   filename: string;
+  description: string;
   // Add any other properties that your video objects have
 }
 
@@ -25,7 +26,7 @@ const HomePage = () => {
   const fetchSuggestedContent = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/videos/random/${user.id}`
+        `http://localhost:5000/api/videos/random/${user.id}`,
       );
       const data = await response.json();
       if (response.status === 200) {
@@ -39,9 +40,9 @@ const HomePage = () => {
     }
   };
   return (
-    <div>
+    <div className="flex flex-wrap gap-20 pl-5">
       {suggestedVideos.map((video) => (
-        <div key={video.id} className="bg-[#000000] flex flex-col">
+        <div key={video.id} className="max-w-[400px]">
           <VideoCard data={video} />
         </div>
       ))}

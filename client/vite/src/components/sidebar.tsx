@@ -9,6 +9,7 @@ import AuthContext from "../context/AuthContext";
 import StreamForm from "./StreamForm"; // Import the new StreamForm component
 import PostForm from "./PostForm";
 import { IoCreateOutline } from "react-icons/io5";
+import { ModeToggle } from "./mode-toggle";
 
 const Sidebar = () => {
   let { user, logoutUser } = useContext(AuthContext);
@@ -112,6 +113,8 @@ const Sidebar = () => {
                 </div>
               </button>
 
+              <ModeToggle />
+
               <Link to="/login" onClick={logoutUser} style={{ color: "#FFF" }}>
                 <div
                   className={`${
@@ -141,10 +144,7 @@ const Sidebar = () => {
         <StreamForm onClose={() => setShowStreamForm(false)} />
       )}
 
-      {showPostForm && (
-        <PostForm onClose={() => setShowPostForm(false)} />
-      )}
-
+      {showPostForm && <PostForm onClose={() => setShowPostForm(false)} />}
     </div>
   );
 };

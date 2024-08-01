@@ -1,11 +1,11 @@
 import { Router } from "express";
-import authRoutes from "./authRoutes";
-import userRoutes from "./userRoutes";
-import videorouter from "../controllers/videoupload";
-import streamRouter from "../controllers/videoStream";
-import profileRoutes from "./profileRoutes";
-import searchrouter from "../controllers/searchController";
-import liveStream from "../controllers/liveStream";
+import authRoutes from "./auth.routes";
+import userRoutes from "./user.routes";
+import videorouter from "../services/videoupload";
+import streamRouter from "../services/videoStream";
+import profileRoutes from "./profile.routes";
+import searchrouter from "../services/search";
+import liveStream from "../services/liveStream";
 
 const router = Router();
 

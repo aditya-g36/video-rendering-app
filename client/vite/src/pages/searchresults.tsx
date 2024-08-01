@@ -28,7 +28,7 @@ const HomePage = () => {
   const fetchSuggestedContent = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/search/searchquery/${searchquery}`
+        `http://localhost:5000/api/search/searchquery/${searchquery}`,
       );
       const data = await response.json();
       if (response.status === 200) {
@@ -42,14 +42,12 @@ const HomePage = () => {
     }
   };
   return (
-    <div className="border-x-[0.5px] border-slate-700 bg-[#000000]">
-      <div className="border-x-[0.5px] border-slate-700 bg-[#000000]">
-        {suggestedVideos.map((video) => (
-          <div key={video.id}>
-            <ResultCard data={video} />
-          </div>
-        ))}
-      </div>
+    <div className="flex flex-wrap gap-20 pl-5 bg-[#000000]">
+      {suggestedVideos.map((video) => (
+        <div key={video.id}>
+          <ResultCard data={video} />
+        </div>
+      ))}
     </div>
   );
 };

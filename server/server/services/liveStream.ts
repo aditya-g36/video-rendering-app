@@ -1,6 +1,6 @@
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
-import prisma from "../prisma";
+import { createstream } from "../dao/stream.dao";
 
 const router = express.Router();
 
@@ -19,15 +19,13 @@ router.post("/create-stream", async (req, res) => {
     const streamUrl = `/live/${streamKey}`;
 
     // Create a new Stream entry in the database
-    const newStream = await prisma.stream.create({
-      data: {
-        userId: parseInt(userId),
-        title,
-        description,
-        url: streamUrl,
-        streamKey,
-      },
-    });
+    const newStream = await createstream(
+      parseInt(userId),
+      title,
+      description,
+      streamKey,
+      streamUrl
+    );
 
     res.status(201).json({
       message: "Stream created successfully",

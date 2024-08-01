@@ -33,7 +33,7 @@ export function setupLiveStreaming(httpServer: HTTPServer, io: SocketIOServer) {
   nms.on("prePublish", async (id, StreamPath, args) => {
     console.log(
       "[NodeEvent on prePublish]",
-      `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`
+      `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`,
     );
 
     const streamKey = StreamPath.split("/")[2];
@@ -58,7 +58,7 @@ export function setupLiveStreaming(httpServer: HTTPServer, io: SocketIOServer) {
   nms.on("donePublish", async (id, StreamPath, args) => {
     console.log(
       "[NodeEvent on donePublish]",
-      `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`
+      `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`,
     );
 
     const streamKey = StreamPath.split("/")[2];
