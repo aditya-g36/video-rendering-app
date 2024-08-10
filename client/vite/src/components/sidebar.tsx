@@ -10,6 +10,8 @@ import StreamForm from "./StreamForm"; // Import the new StreamForm component
 import PostForm from "./PostForm";
 import { IoCreateOutline } from "react-icons/io5";
 import { ModeToggle } from "./mode-toggle";
+import { BsCameraVideo } from "react-icons/bs";
+
 
 const Sidebar = () => {
   let { user, logoutUser } = useContext(AuthContext);
@@ -34,23 +36,21 @@ const Sidebar = () => {
       >
         <div className="min-h-screen w-16 lg:w-96 duration-500 text-gray-100 px-4">
           <div
-            className={` min-h-screen${
-              open ? "w-16 lg:w-40 lg:ml-20" : "w-16"
-            } duration-500 text-gray-100 px-4`}
+            className={` min-h-screen${open ? "w-16 lg:w-40 lg:ml-20" : "w-16"
+              } duration-500 text-gray-100 px-4`}
           >
             <div className="py-3 flex">
-              <h2>Tegami</h2>
+              <h1><BsCameraVideo /></h1>
             </div>
             <div className="mt-4 flex flex-col gap-4 relative">
               {menus?.map((menu, i) => (
                 <Link
                   to={menu?.link}
                   key={i}
-                  className={`${
-                    open
-                      ? "group flex items-center text-lg  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md"
-                      : " py-3 flex justify-end cursor-pointer hover:bg-gray-800 rounded-md"
-                  }`}
+                  className={`${open
+                    ? "group flex items-center text-lg  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md"
+                    : " py-3 flex justify-end cursor-pointer hover:bg-gray-800 rounded-md"
+                    }`}
                   style={{ color: "#FFF" }}
                 >
                   <div>{React.createElement(menu?.icon, { size: "19" })}</div>
@@ -58,16 +58,14 @@ const Sidebar = () => {
                     style={{
                       transitionDelay: `${i + 2}00ms`,
                     }}
-                    className={`whitespace-pre duration-500 ${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
-                    }`}
+                    className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                      }`}
                   >
                     {menu?.name}
                   </div>
                   <div
-                    className={`${
-                      open && "hidden"
-                    } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+                    className={`${open && "hidden"
+                      } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
                   >
                     {menu?.name}
                   </div>
@@ -85,9 +83,8 @@ const Sidebar = () => {
                   style={{
                     transitionDelay: `${8}00ms`,
                   }}
-                  className={`whitespace-pre duration-500 ${
-                    !open && "opacity-0 translate-x-28 overflow-hidden"
-                  }`}
+                  className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                    }`}
                 >
                   Go Live
                 </div>
@@ -105,9 +102,8 @@ const Sidebar = () => {
                   style={{
                     transitionDelay: `${8}00ms`,
                   }}
-                  className={`whitespace-pre duration-500 ${
-                    !open && "opacity-0 translate-x-28 overflow-hidden"
-                  }`}
+                  className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                    }`}
                 >
                   Post
                 </div>
@@ -117,20 +113,18 @@ const Sidebar = () => {
 
               <Link to="/login" onClick={logoutUser} style={{ color: "#FFF" }}>
                 <div
-                  className={`${
-                    open
-                      ? "group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md"
-                      : " py-3 flex justify-end cursor-pointer hover:bg-gray-800 rounded-md"
-                  }`}
+                  className={`${open
+                    ? "group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md"
+                    : " py-3 flex justify-end cursor-pointer hover:bg-gray-800 rounded-md"
+                    }`}
                 >
                   <div>{React.createElement(MdLogout, { size: "19" })}</div>
                   <div
                     style={{
                       transitionDelay: `${8}00ms`,
                     }}
-                    className={`whitespace-pre duration-500 ${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
-                    }`}
+                    className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                      }`}
                   >
                     LogOut
                   </div>

@@ -1,8 +1,54 @@
-import { PrismaClient, Prisma } from "@prisma/client";
 import fs from "fs/promises";
 import path from "path";
-import { SstreamFindMnay } from "../dao/stream.dao";
-import { SvideoFindMany } from "../dao/video.dao";
+import { PrismaClient, Prisma } from "@prisma/client";
+import express from "express";
+import { v4 as uuidv4 } from "uuid";
+
+import { SvideoFindMany } from "../dao/video";
+import { SstreamFindMnay, createstream } from "../dao/stream";
+
+const livestream = express.Router();
+
+livestream.post("/create-stream", async (req, res) => {
+  const { userId, title, description } = req.body;
+  console.log(req.body);
+  if (!userId || !title || !description) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+  try {
+    // Generate a unique stream key
+    const streamKey = uuidv4();
+
+    // Generate a unique URL for the stream
+    const streamUrl = `/live/${streamKey}`;
+
+    // Create a new Stream entry in the database
+    const newStream = await createstream(
+      parseInt(userId),
+      title,
+      description,
+      streamKey,
+      streamUrl
+    );
+
+    res.status(201).json({
+      message: "Stream created successfully",
+      streamKey: newStream.streamKey,
+      streamUrl: newStream.url,
+      rtmpUrl: `rtmp://localhost:1935/live`,
+      stream: newStream,
+    });
+  } catch (error) {
+    console.error("Error creating stream:", error);
+    res.status(500).json({ error: "Failed to create stream" });
+  }
+});
+
+export { livestream };
+
+
+
 
 const prisma = new PrismaClient();
 const QueryMode = Prisma.QueryMode;
@@ -64,4 +110,5 @@ class VideoService {
   }
 }
 
-export default VideoService;
+export { VideoService };
+

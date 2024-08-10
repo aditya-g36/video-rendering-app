@@ -1,6 +1,6 @@
 
 import { Request, Response } from "express";
-import VideoService from "./videoService";
+import { VideoService } from "../services/stream.service";
 import express from "express";
 
 const searchrouter = express.Router();

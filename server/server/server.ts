@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import routes from "./routes";
 import morgan from "morgan";
-import { setupLiveStreaming } from "./liveStream";
+import { setupLiveStreaming } from "./utils/liveStream";
 import http from "http";
 import { Server as SocketIOServer } from "socket.io";
 import path from "path";

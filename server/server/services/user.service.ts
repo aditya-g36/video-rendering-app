@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { createUser, findUserByEmail, findUnique } from "../dao/user.dao";
+import { createUser, findUserByEmail, findUnique } from "../dao/user";
 import jwt from "jsonwebtoken";
-import { createProfile } from "../dao/profile.dao";
+import { createProfile } from "../dao/profile";
 
 export const register = async (req: Request, res: Response) => {
   const { username, email, password, password2 } = req.body;

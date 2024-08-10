@@ -1,6 +1,6 @@
 // routes/profileRoutes.ts
 import { Router } from 'express';
-import { handleProfileRequest } from '../services/profile';
+import { handleProfileRequest } from '../services/profile.service';
 
 const router = Router();
 

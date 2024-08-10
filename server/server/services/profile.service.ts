@@ -7,7 +7,7 @@ import {
   createprofile,
   updateprofilePut,
   updateprofilePatch,
-} from "../dao/profile.dao";
+} from "../dao/profile";
 
 const prisma = new PrismaClient();
 

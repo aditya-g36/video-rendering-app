@@ -1,11 +1,10 @@
 import { Router } from "express";
-import authRoutes from "./auth.routes";
-import userRoutes from "./user.routes";
-import videorouter from "../services/videoupload";
-import streamRouter from "../services/videoStream";
-import profileRoutes from "./profile.routes";
-import searchrouter from "../services/search";
-import liveStream from "../services/liveStream";
+import authRoutes from "./auth";
+import userRoutes from "./user";
+import { videorouter, streamRouter } from "../services/video.service";
+import profileRoutes from "./profile";
+import searchrouter from "../utils/search";
+import { livestream } from "../services/stream.service";
 
 const router = Router();
 
@@ -14,7 +13,7 @@ router.use("/auth", authRoutes);
 router.use("/videos", videorouter);
 router.use("/users", userRoutes);
 router.use("/stream", streamRouter);
-router.use("/livestream", liveStream);
+router.use("/livestream", livestream);
 router.use(profileRoutes);
 
 export default router;
